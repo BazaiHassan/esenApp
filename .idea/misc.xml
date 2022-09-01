@@ -45,6 +45,9 @@
         <entry key="..\:/EsenApp/AndroidSource/app/src/main/res/layout/progress_view.xml" value="0.2" />
         <entry key="..\:/EsenApp/AndroidSource/app/src/main/res/menu/bottom_nav.xml" value="0.1859375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_animation.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_video.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/item_anim_banner.xml" value="0.19375" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.19375" />
       </map>
     </option>

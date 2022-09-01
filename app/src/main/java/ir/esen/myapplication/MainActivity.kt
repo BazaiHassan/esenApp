@@ -3,7 +3,7 @@ package ir.esen.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import ir.esen.myapplication.animations.AudioFragment
+import ir.esen.myapplication.animations.AnimationFragment
 import ir.esen.myapplication.profile.ProfileFragment
 import ir.esen.myapplication.videoStory.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.video -> replaceFragments(VideoFragment())
-                R.id.audio -> replaceFragments((AudioFragment()))
+                R.id.audio -> replaceFragments((AnimationFragment()))
                 R.id.profile -> replaceFragments((ProfileFragment()))
             }
             true

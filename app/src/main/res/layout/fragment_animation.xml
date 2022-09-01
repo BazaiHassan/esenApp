@@ -19,24 +19,24 @@
                 android:id="@+id/rltv_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_marginRight="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:background="@drawable/shape_rltv_search"
-                android:padding="@dimen/_6sdp">
+                android:background="@drawable/shape_rltv_search">
 
                 <ImageView
                     android:id="@+id/img_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
                     android:fontFamily="@font/iransansmobilelight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_toLeftOf="@id/img_search"
@@ -45,8 +45,8 @@
 
             </RelativeLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/banner_viewPager"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_anim_banner"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_180sdp"
                 android:layout_marginTop="@dimen/_4sdp"
