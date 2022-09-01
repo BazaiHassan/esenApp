@@ -7,9 +7,11 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ir.esen.myapplication.R
+import ir.esen.myapplication.animations.adapter.AdapterAllAnim
 import ir.esen.myapplication.animations.adapter.AdapterAnimation
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
@@ -40,9 +42,15 @@ class AnimationFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         animationView.animationLiveData.observe(viewLifecycleOwner){
+            // Banners in Animation page
             val bannerAdapter :AdapterAnimation by inject { parametersOf(it) }
             rv_anim_banner.layoutManager = LinearLayoutManager(requireActivity(),RecyclerView.HORIZONTAL, false)
             rv_anim_banner.adapter = bannerAdapter
+
+            // All Animations
+            val allAnimAdapter:AdapterAllAnim by inject { parametersOf(it) }
+            rv_anim_item.layoutManager = GridLayoutManager(requireActivity(),2,LinearLayoutManager.VERTICAL,false)
+            rv_anim_item.adapter = allAnimAdapter
         }
     }
 

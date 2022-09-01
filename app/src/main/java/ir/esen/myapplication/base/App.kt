@@ -1,6 +1,7 @@
 package ir.esen.myapplication.base
 
 import android.app.Application
+import ir.esen.myapplication.animations.adapter.AdapterAllAnim
 import ir.esen.myapplication.animations.adapter.AdapterAnimation
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
 import ir.esen.myapplication.api.*
@@ -43,6 +44,7 @@ class App : Application() {
             factory<AnimationRepository> { AnimationRepositoryImpl(RemoteAnimationDataSource(get())) }
             viewModel { AnimationViewModel(get()) }
             factory {(animationList:List<ResponseAnimation>)->AdapterAnimation(animationList)}
+            factory {(allAnim:List<ResponseAnimation>)->AdapterAllAnim(allAnim)}
 
             factory<SearchRepository> { SearchRepositoryImpl(RemoteSearchDataSource(get())) }
             viewModel { SearchViewModel(get()) }
