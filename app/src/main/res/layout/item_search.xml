@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_rltv_search"
+    app:cardCornerRadius="@dimen/_6sdp"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_4sdp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:padding="@dimen/_6sdp"
+        android:layoutDirection="rtl"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_item_search"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:fontFamily="@font/iransansmobilelight"
+            android:textSize="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:id="@+id/txt_item_name_search"
+            android:text="داستان های فارسی"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
