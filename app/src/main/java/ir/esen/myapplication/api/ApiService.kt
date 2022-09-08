@@ -27,15 +27,14 @@ interface ApiService {
 
 
 
-    // TODO: need to fixed from server side ------------------------
-    @FormUrlEncoded
-    @POST("profile/user_check")
-    fun checkUser(@Body userInfo: JsonObject): Single<ResponseCheckUser>
-
-
-
     @FormUrlEncoded
     @POST("profile/check_user.php")
+    fun checkUser(@Field("mobile_phone") phone: String): Single<ResponseCheckUser>
+
+
+
+    @FormUrlEncoded
+    @POST("profile/auth_user.php")
     fun authUser(@Field("mobile_phone") phone: String): Single<ResponseAuthUser>
 
 

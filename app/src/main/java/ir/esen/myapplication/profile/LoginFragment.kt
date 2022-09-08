@@ -47,9 +47,9 @@ class LoginFragment : Fragment() {
             } else {
                 progress_code_send.visibility = View.VISIBLE
                 btn_login.visibility = View.GONE
-
-                authUserViewModel.authUserViewModel(edt_login_phone.text.toString())
-                showDialog()
+                val phone:String = edt_login_phone.text.toString()
+                authUserViewModel.authUserViewModel(phone)
+                showDialog(phone)
 
             }
         }
@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
     }
 
 
-    private fun showDialog() {
+    private fun showDialog(phone:String) {
 
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -72,14 +72,22 @@ class LoginFragment : Fragment() {
         dialog.window!!.setGravity(Gravity.BOTTOM)
         dialog.setCancelable(false)
         dialog.show()
+        Log.d("TAG_PHONE", "showDialog:${phone} ")
         dialog.btn_code_verify.setOnClickListener {
+            dialog.progress_code_validation.visibility = View.VISIBLE
+            dialog.btn_code_verify.visibility = View.GONE
             authUserViewModel.authUserLiveData.observe(viewLifecycleOwner) {
                 val userInputCode = dialog.txt_verify_code_bs.text.toString().toInt()
                 if (userInputCode == it.code){
-                    Toast.makeText(context,"Logged In",Toast.LENGTH_LONG).show()
-                    replaceFragments(ProfileFragment())
-                    //TODO: Token should be saved into sharedPref.
-                    dialog.dismiss()
+                    checkUserViewModel.checkUserViewModel(phone)
+                    checkUserViewModel.checkUserLiveData.observe(viewLifecycleOwner){resCheckUser ->
+                        Toast.makeText(context,"${resCheckUser.message}",Toast.LENGTH_SHORT).show()
+                        dialog.progress_code_validation.visibility = View.GONE
+                        checkUserViewModel.checkUserLogin()
+                        replaceFragments(ProfileFragment())
+                        dialog.dismiss()
+                    }
+
                 }else{
                     Toast.makeText(context,"کد وارد شده اشتباه است.",Toast.LENGTH_LONG).show()
 
@@ -89,6 +97,8 @@ class LoginFragment : Fragment() {
 
         dialog.btn_close_bs_verification.setOnClickListener {
             dialog.dismiss()
+            progress_code_send.visibility = View.GONE
+            btn_login.visibility = View.VISIBLE
         }
 
 

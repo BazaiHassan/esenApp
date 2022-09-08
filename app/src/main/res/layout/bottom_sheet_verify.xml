@@ -50,6 +50,15 @@
         android:textAlignment="center"
         app:icon="@drawable/ic_verified"
         app:iconGravity="textStart" />
+    <ProgressBar
+        android:layout_gravity="center"
+        android:id="@+id/progress_code_validation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/myGray"
+        android:indeterminateDrawable="@drawable/progress_bg"
+        android:visibility="gone" />
 
 
 </LinearLayout>

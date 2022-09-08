@@ -7,7 +7,7 @@ import ir.esen.myapplication.animations.auth.dataModel.ResponseCheckUser
 
 interface CheckUserDataSource {
 
-    fun checkUser(userInfo:JsonObject):Single<ResponseCheckUser>
+    fun checkUser(phone: String):Single<ResponseCheckUser>
 
     fun saveToken(token:String)
     fun loadToken()

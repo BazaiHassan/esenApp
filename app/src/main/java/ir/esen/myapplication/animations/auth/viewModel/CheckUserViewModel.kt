@@ -1,5 +1,6 @@
 package ir.esen.myapplication.animations.auth.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonObject
 import io.reactivex.SingleObserver
@@ -15,8 +16,8 @@ class CheckUserViewModel(private val checkUserRepository: CheckUserRepository): 
     val checkUserLiveData = MutableLiveData<ResponseCheckUser>()
     val checkUserLogin = MutableLiveData<Boolean>()
 
-    fun checkUserViewModel(userInfo:JsonObject){
-        checkUserRepository.checkUser(userInfo).subscribeOn(Schedulers.io())
+    fun checkUserViewModel(phone: String){
+        checkUserRepository.checkUser(phone).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<ResponseCheckUser>{
                 override fun onSubscribe(d: Disposable) {
@@ -25,11 +26,11 @@ class CheckUserViewModel(private val checkUserRepository: CheckUserRepository): 
 
                 override fun onSuccess(t: ResponseCheckUser) {
                     checkUserLiveData.value = t
-                    //TODO Here I got error find another way to handle this
+                    Log.d("TAG_TOKEN_OnSuccess", "onSuccess: ${t.token}")
                 }
 
                 override fun onError(e: Throwable) {
-
+                    Log.d("TAG_Massage_OnError", "onSuccess: ${e.message}")
                 }
 
             })

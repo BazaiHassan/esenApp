@@ -10,8 +10,8 @@ import ir.esen.myapplication.helper.TokenContainer
 
 class CheckUserRepositoryImpl(private val remoteCheckUserDataSource: CheckUserDataSource, private val localAuthUserDataSource: LocalAuthUserDataSource):
     CheckUserRepository {
-    override fun checkUser(userInfo: JsonObject): Single<ResponseCheckUser> {
-        return remoteCheckUserDataSource.checkUser(userInfo).doOnSuccess {
+    override fun checkUser(phone: String): Single<ResponseCheckUser> {
+        return remoteCheckUserDataSource.checkUser(phone).doOnSuccess {
             TokenContainer.updateToken(it.token)
             localAuthUserDataSource.saveToken(it.token!!)
         }

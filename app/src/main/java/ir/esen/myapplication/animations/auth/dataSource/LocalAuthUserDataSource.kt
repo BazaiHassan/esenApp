@@ -8,7 +8,7 @@ import ir.esen.myapplication.helper.TokenContainer
 
 class LocalAuthUserDataSource(private val sharedPreferences: SharedPreferences) : CheckUserDataSource {
 
-    override fun checkUser(userInfo: JsonObject): Single<ResponseCheckUser> {
+    override fun checkUser(phone: String): Single<ResponseCheckUser> {
         TODO("Not yet implemented")
     }
 
