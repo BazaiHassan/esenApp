@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.item_video_list.view.*
 
 class AdapterAllAnim(private val animList:List<ResponseAnimation>):RecyclerView.Adapter<AdapterAllAnim.AllAnimViewHolder>() {
 
+    var onItemClick: ((ResponseAnimation) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllAnimViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_video_list,parent,false)
@@ -24,6 +25,11 @@ class AdapterAllAnim(private val animList:List<ResponseAnimation>):RecyclerView.
         val itemAnim = animList[position]
         Glide.with(holder.itemView).load(itemAnim.animBanner).into(holder.imgThumbnailAnimation)
         holder.txtAnimName.text = itemAnim.animName
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(itemAnim)
+
+        }
     }
 
     override fun getItemCount(): Int {

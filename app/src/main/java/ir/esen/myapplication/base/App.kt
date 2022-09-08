@@ -1,8 +1,18 @@
 package ir.esen.myapplication.base
 
 import android.app.Application
+import android.content.SharedPreferences
 import ir.esen.myapplication.animations.adapter.AdapterAllAnim
 import ir.esen.myapplication.animations.adapter.AdapterAnimation
+import ir.esen.myapplication.animations.auth.dataSource.LocalAuthUserDataSource
+import ir.esen.myapplication.animations.auth.dataSource.RemoteAuthUserDataSource
+import ir.esen.myapplication.animations.auth.dataSource.RemoteCheckUserDataSource
+import ir.esen.myapplication.animations.auth.repository.AuthUserRepository
+import ir.esen.myapplication.animations.auth.repository.AuthUserRepositoryImpl
+import ir.esen.myapplication.animations.auth.repository.CheckUserRepository
+import ir.esen.myapplication.animations.auth.repository.CheckUserRepositoryImpl
+import ir.esen.myapplication.animations.auth.viewModel.AuthUserViewModel
+import ir.esen.myapplication.animations.auth.viewModel.CheckUserViewModel
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
 import ir.esen.myapplication.api.*
 import ir.esen.myapplication.animations.dataSource.RemoteAnimationDataSource
@@ -21,6 +31,7 @@ import ir.esen.myapplication.search.repository.SearchRepository
 import ir.esen.myapplication.search.repository.SearchRepositoryImpl
 import ir.esen.myapplication.search.viewModel.SearchViewModel
 import ir.esen.myapplication.videoStory.dataModel.ResponseVideoList
+import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -37,6 +48,8 @@ class App : Application() {
         val myModule = module {
 
             single<ApiService> { retrofitApi() }
+            single<SharedPreferences> { this@App.getSharedPreferences("userToken", MODE_PRIVATE) }
+
             factory<VideoListRepository> { CoinListRepositoryImpl(RemoteVideoListDataSource(get())) }
             viewModel { VideoListViewModel(get()) }
             factory { (videoList: List<ResponseVideoList>) -> AdapterVideoList(videoList) }
@@ -50,6 +63,21 @@ class App : Application() {
             viewModel { SearchViewModel(get()) }
             factory { (searchList: List<ResponseSearch>) -> AdapterSearchList(searchList) }
 
+            // User Authentication operation
+            factory<AuthUserRepository> {
+                AuthUserRepositoryImpl(
+                    RemoteAuthUserDataSource(get())
+                )
+            }
+            viewModel { AuthUserViewModel(get()) }
+
+            // Check User for login or registration
+            factory<CheckUserRepository> { CheckUserRepositoryImpl(
+                RemoteCheckUserDataSource(get()),
+                LocalAuthUserDataSource(get())
+            ) }
+            viewModel { CheckUserViewModel(get()) }
+
 
         }
 
@@ -57,6 +85,9 @@ class App : Application() {
             androidContext(this@App)
             modules(myModule)
         }
+
+        val checkUserRepository: CheckUserRepository = get()
+        checkUserRepository.loadToken()
     }
 
 
