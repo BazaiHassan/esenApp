@@ -46,18 +46,21 @@
         <entry key="..\:/EsenApp/AndroidSource/app/src/main/res/menu/bottom_nav.xml" value="0.1859375" />
         <entry key="app/src/main/res/drawable/banner_bg.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/bg_button_one.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/bg_sheet_profile.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/bottom_sheet_bg.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/bottomlayout.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/progress_bg.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/shape_edittext_phone.xml" value="0.14" />
-        <entry key="app/src/main/res/layout-v23/bottom_sheet_layout.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/drawable/top_shaped_bg.xml" value="0.14" />
+        <entry key="app/src/main/res/layout-v23/bottom_sheet_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout-v23/user_login_false.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/bottom_sheet_layout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/bottom_sheet_verify.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_animation.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_video.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/item_anim_banner.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/item_video_list.xml" value="0.19375" />
