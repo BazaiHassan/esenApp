@@ -6,6 +6,7 @@ import ir.esen.myapplication.animations.auth.dataModel.ResponseAuthUser
 import ir.esen.myapplication.animations.auth.dataModel.ResponseCheckUser
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
 import ir.esen.myapplication.helper.TokenContainer
+import ir.esen.myapplication.profile.dataModel.ResponseShowProfile
 import ir.esen.myapplication.search.ResponseSearch
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -36,6 +37,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("profile/auth_user.php")
     fun authUser(@Field("mobile_phone") phone: String): Single<ResponseAuthUser>
+
+    @GET("profile/show_profile.php")
+    fun showProfile():Single<ResponseShowProfile>
 
 
 }

@@ -24,6 +24,10 @@ import ir.esen.myapplication.videoStory.viewModel.VideoListViewModel
 import ir.esen.myapplication.animations.repository.AnimationRepository
 import ir.esen.myapplication.animations.repository.AnimationRepositoryImpl
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
+import ir.esen.myapplication.profile.dataSource.RemoteShowProfileDataSource
+import ir.esen.myapplication.profile.repository.ShowProfileRepository
+import ir.esen.myapplication.profile.repository.ShowProfileRepositoryImpl
+import ir.esen.myapplication.profile.viewModel.ShowProfileViewModel
 import ir.esen.myapplication.search.AdapterSearchList
 import ir.esen.myapplication.search.ResponseSearch
 import ir.esen.myapplication.search.dataSource.RemoteSearchDataSource
@@ -35,6 +39,7 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
+import org.koin.dsl.factory
 import org.koin.dsl.module
 
 class App : Application() {
@@ -77,6 +82,10 @@ class App : Application() {
                 LocalAuthUserDataSource(get())
             ) }
             viewModel { CheckUserViewModel(get()) }
+
+            // Show Profile
+            factory<ShowProfileRepository>{ShowProfileRepositoryImpl(RemoteShowProfileDataSource(get()))}
+            viewModel{ ShowProfileViewModel(get()) }
 
 
         }

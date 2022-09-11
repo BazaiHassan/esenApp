@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import ir.esen.myapplication.R
 import ir.esen.myapplication.animations.auth.viewModel.CheckUserViewModel
+import ir.esen.myapplication.profile.viewModel.ShowProfileViewModel
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProfileFragment : Fragment(){
+
+    private val showProfileViewModel:ShowProfileViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +34,12 @@ class ProfileFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        showProfileViewModel.showProfileLiveData.observe(viewLifecycleOwner){
+            user_fullname.text = it.nameFamily
+            user_phone.text = it.mobilePhone
+            user_email.text = it.email
+            user_date.text = it.date
+        }
 
 
     }

@@ -26,6 +26,7 @@
         android:textSize="@dimen/_16sdp" />
 
     <EditText
+        android:inputType="number"
         android:id="@+id/txt_verify_code_bs"
         android:hint="کد یکبار مصرف"
         android:textAlignment="center"
