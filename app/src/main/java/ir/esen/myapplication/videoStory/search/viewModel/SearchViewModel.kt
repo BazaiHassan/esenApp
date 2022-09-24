@@ -1,4 +1,4 @@
-package ir.esen.myapplication.search.viewModel
+package ir.esen.myapplication.videoStory.search.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.SingleObserver
@@ -6,8 +6,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import ir.esen.myapplication.base.BaseViewModel
-import ir.esen.myapplication.search.ResponseSearch
-import ir.esen.myapplication.search.repository.SearchRepository
+import ir.esen.myapplication.videoStory.search.ResponseSearch
+import ir.esen.myapplication.videoStory.search.repository.SearchRepository
 
 class SearchViewModel(private val searchRepository: SearchRepository):BaseViewModel() {
 

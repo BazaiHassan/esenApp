@@ -31,30 +31,6 @@ class AdapterVideoList(private val videoList: List<ResponseVideoList>) :
             onItemClicked?.invoke(itemVideo)
         }
 
-        holder.bookmark.setOnClickListener {
-            if (VariableContainer.bookmarkState){
-                holder.bookmark.setImageDrawable(null)
-                holder.bookmark.setBackgroundResource(R.drawable.ic_unbookmark)
-                VariableContainer.updateBookmarkState(false)
-            }else{
-                holder.bookmark.setImageDrawable(null)
-                holder.bookmark.setBackgroundResource(R.drawable.ic_bookmark)
-                VariableContainer.updateBookmarkState(true)
-            }
-
-        }
-
-        holder.like.setOnClickListener {
-            if (VariableContainer.likeState){
-                holder.like.setImageDrawable(null)
-                holder.like.setBackgroundResource(R.drawable.ic_dislike)
-                VariableContainer.updateLikeState(false)
-            }else{
-                holder.like.setImageDrawable(null)
-                holder.like.setBackgroundResource(R.drawable.ic_like)
-                VariableContainer.updateLikeState(true)
-            }
-        }
 
     }
 
@@ -63,8 +39,6 @@ class AdapterVideoList(private val videoList: List<ResponseVideoList>) :
     class VideoListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val videoImage = itemView.imageViewMoviePoster
         val videoName = itemView.textMoviePoster
-        val bookmark = itemView.bookmark
-        val like = itemView.like
 
     }
 

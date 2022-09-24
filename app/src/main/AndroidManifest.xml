@@ -18,7 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".search.SearchActivity"
+            android:name=".animations.search.SearchAnimActivity"
+            android:exported="false" />
+        <activity
+            android:name=".videoStory.search.SearchActivity"
             android:exported="false" />
         <activity
             android:name=".videoStory.VideoPlayerActivity"

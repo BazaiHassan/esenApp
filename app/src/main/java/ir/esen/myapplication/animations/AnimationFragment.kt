@@ -9,16 +9,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
-import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import ir.esen.myapplication.R
 import ir.esen.myapplication.animations.adapter.AdapterAllAnim
 import ir.esen.myapplication.animations.adapter.AdapterAnimation
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
+import ir.esen.myapplication.animations.search.SearchAnimActivity
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
 import ir.esen.myapplication.base.BaseFragment
 import ir.esen.myapplication.videoStory.VideoPlayerActivity
@@ -68,6 +67,10 @@ class AnimationFragment : BaseFragment() {
             allAnimAdapter.onItemClick = { item ->
                 showDialog(item)
             }
+        }
+
+        rltv_search.setOnClickListener {
+            startActivity(Intent(requireActivity(), SearchAnimActivity::class.java))
         }
     }
 

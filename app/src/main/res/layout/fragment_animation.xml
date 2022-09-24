@@ -18,9 +18,9 @@
             <RelativeLayout
                 android:id="@+id/rltv_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_height="@dimen/_48sdp"
                 android:layout_marginLeft="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:background="@drawable/shape_rltv_search">
@@ -34,12 +34,12 @@
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
-                    android:fontFamily="@font/iransansmobilelight"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_toLeftOf="@id/img_search"
+                    android:fontFamily="@font/iransansmobilelight"
                     android:text="جستجو"
                     android:textColor="@color/myGray" />
 

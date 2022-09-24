@@ -1,4 +1,4 @@
-package ir.esen.myapplication.search
+package ir.esen.myapplication.videoStory.search
 
 import com.google.gson.annotations.SerializedName
 

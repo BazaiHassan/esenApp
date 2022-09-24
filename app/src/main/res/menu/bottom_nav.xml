@@ -11,8 +11,8 @@
         android:title="انیمیشن" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/deselected_user"
-        android:title="حساب کاربری" />
+        android:icon="@drawable/ic_star"
+        android:title="مورد علاقه" />
 
 
 </menu>

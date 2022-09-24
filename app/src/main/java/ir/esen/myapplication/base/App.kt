@@ -23,23 +23,28 @@ import ir.esen.myapplication.videoStory.repository.CoinListRepositoryImpl
 import ir.esen.myapplication.videoStory.viewModel.VideoListViewModel
 import ir.esen.myapplication.animations.repository.AnimationRepository
 import ir.esen.myapplication.animations.repository.AnimationRepositoryImpl
+import ir.esen.myapplication.animations.search.AdapterSearchAnimList
+import ir.esen.myapplication.animations.search.ResponseSearchAnim
+import ir.esen.myapplication.animations.search.dataSource.RemoteAnimSearchDataSource
+import ir.esen.myapplication.animations.search.repository.SearchAnimRepository
+import ir.esen.myapplication.animations.search.repository.SearchAnimRepositoryImpl
+import ir.esen.myapplication.animations.search.viewModel.SearchAnimViewModel
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
 import ir.esen.myapplication.profile.dataSource.RemoteShowProfileDataSource
 import ir.esen.myapplication.profile.repository.ShowProfileRepository
 import ir.esen.myapplication.profile.repository.ShowProfileRepositoryImpl
 import ir.esen.myapplication.profile.viewModel.ShowProfileViewModel
-import ir.esen.myapplication.search.AdapterSearchList
-import ir.esen.myapplication.search.ResponseSearch
-import ir.esen.myapplication.search.dataSource.RemoteSearchDataSource
-import ir.esen.myapplication.search.repository.SearchRepository
-import ir.esen.myapplication.search.repository.SearchRepositoryImpl
-import ir.esen.myapplication.search.viewModel.SearchViewModel
+import ir.esen.myapplication.videoStory.search.ResponseSearch
+import ir.esen.myapplication.videoStory.search.dataSource.RemoteSearchDataSource
+import ir.esen.myapplication.videoStory.search.repository.SearchRepository
+import ir.esen.myapplication.videoStory.search.repository.SearchRepositoryImpl
+import ir.esen.myapplication.videoStory.search.viewModel.SearchViewModel
 import ir.esen.myapplication.videoStory.dataModel.ResponseVideoList
+import ir.esen.myapplication.videoStory.search.AdapterSearchList
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
-import org.koin.dsl.factory
 import org.koin.dsl.module
 
 class App : Application() {
@@ -86,6 +91,11 @@ class App : Application() {
             // Show Profile
             factory<ShowProfileRepository>{ShowProfileRepositoryImpl(RemoteShowProfileDataSource(get()))}
             viewModel{ ShowProfileViewModel(get()) }
+
+            // Search in animations
+            factory<SearchAnimRepository> { SearchAnimRepositoryImpl(RemoteAnimSearchDataSource(get())) }
+            viewModel { SearchAnimViewModel(get()) }
+            factory { (searchList: List<ResponseSearchAnim>) -> AdapterSearchAnimList(searchList) }
 
 
         }
