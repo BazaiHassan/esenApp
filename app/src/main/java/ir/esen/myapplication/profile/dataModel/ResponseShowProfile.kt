@@ -4,18 +4,16 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseShowProfile(
 
-	@field:SerializedName("date")
-	val date: String? = null,
+	@field:SerializedName("id")
+	val id: String? = null,
 
-	@field:SerializedName("name_family")
-	val nameFamily: String? = null,
+	@field:SerializedName("b_name")
+	val b_name: String? = null,
 
-	@field:SerializedName("user_image")
-	val userImage: String? = null,
+	@field:SerializedName("b_image")
+	val b_image: String? = null,
 
-	@field:SerializedName("mobile_phone")
-	val mobilePhone: String? = null,
+	@field:SerializedName("b_link")
+	val b_link: String? = null,
 
-	@field:SerializedName("email")
-	val email: String? = null
 )

@@ -8,6 +8,4 @@ import ir.esen.myapplication.api.ApiService
 class RemoteAuthUserDataSource(private val apiService: ApiService) : AuthUserDataSource {
     override fun authUser(userPhone: String): Single<ResponseAuthUser> =
         apiService.authUser(userPhone)
-
-
 }

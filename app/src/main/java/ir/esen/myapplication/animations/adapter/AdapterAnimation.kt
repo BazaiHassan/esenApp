@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.esen.myapplication.R
 import ir.esen.myapplication.animations.dataModel.ResponseAnimation
+import ir.esen.myapplication.videoStory.dataModel.ResponseVideoList
 import kotlinx.android.synthetic.main.item_anim_banner.view.*
 const val BANNER_COUNT = 2
 class AdapterAnimation(private val animBanners:List<ResponseAnimation>):RecyclerView.Adapter<AdapterAnimation.AnimationViewHolder>() {
@@ -25,7 +26,6 @@ class AdapterAnimation(private val animBanners:List<ResponseAnimation>):Recycler
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(itemBanners)
-
         }
     }
 

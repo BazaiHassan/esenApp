@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -20,6 +21,8 @@ import ir.esen.myapplication.animations.dataModel.ResponseAnimation
 import ir.esen.myapplication.animations.search.SearchAnimActivity
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
 import ir.esen.myapplication.base.BaseFragment
+import ir.esen.myapplication.helper.TokenContainer
+import ir.esen.myapplication.profile.viewModel.AddBookmarkViewModel
 import ir.esen.myapplication.videoStory.VideoPlayerActivity
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_animation.*
@@ -31,8 +34,7 @@ import org.koin.core.parameter.parametersOf
 class AnimationFragment : BaseFragment() {
 
     private val animationView: AnimationViewModel by viewModel()
-    val handler = Handler(Looper.myLooper()!!)
-    var bannersSlider: List<ResponseAnimation>? = null
+    private val addBookmarkViewModel: AddBookmarkViewModel by viewModel()
 
 
     override fun onCreateView(
@@ -66,6 +68,13 @@ class AnimationFragment : BaseFragment() {
 
             allAnimAdapter.onItemClick = { item ->
                 showDialog(item)
+            }
+
+            allAnimAdapter.onItemLongClick = { responseAnimList ->
+                addBookmarkViewModel.addBookmark(TokenContainer.token!!,responseAnimList.animName!!,responseAnimList.animLink!!,responseAnimList.animBanner!!)
+                addBookmarkViewModel.addBookmarkLiveData.observe(viewLifecycleOwner){
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

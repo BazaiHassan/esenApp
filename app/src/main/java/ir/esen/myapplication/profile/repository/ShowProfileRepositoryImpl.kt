@@ -5,8 +5,8 @@ import ir.esen.myapplication.profile.dataModel.ResponseShowProfile
 import ir.esen.myapplication.profile.dataSource.ShowProfileDataSource
 
 class ShowProfileRepositoryImpl(private val showProfileDataSource: ShowProfileDataSource):ShowProfileRepository {
-    override fun showProfile(): Single<ResponseShowProfile> {
-        return showProfileDataSource.showProfile()
+    override fun showProfile(token:String): Single<List<ResponseShowProfile>> {
+        return showProfileDataSource.showProfile(token)
     }
 
 }

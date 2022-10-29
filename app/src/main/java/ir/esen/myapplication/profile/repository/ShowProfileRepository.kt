@@ -5,5 +5,5 @@ import ir.esen.myapplication.profile.dataModel.ResponseShowProfile
 
 interface ShowProfileRepository {
 
-    fun showProfile():Single<ResponseShowProfile>
+    fun showProfile(token:String):Single<List<ResponseShowProfile>>
 }

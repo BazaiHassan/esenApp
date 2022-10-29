@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.esen.myapplication.R
 import ir.esen.myapplication.base.BaseFragment
+import ir.esen.myapplication.helper.TokenContainer
+import ir.esen.myapplication.profile.viewModel.AddBookmarkViewModel
 import ir.esen.myapplication.videoStory.search.SearchActivity
 import ir.esen.myapplication.videoStory.viewModel.VideoListViewModel
 import kotlinx.android.synthetic.main.fragment_video.*
@@ -20,6 +23,7 @@ import org.koin.core.parameter.parametersOf
 class VideoFragment : BaseFragment() {
 
     private val videoListViewModel: VideoListViewModel by viewModel()
+    private val addBookmarkViewModel:AddBookmarkViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,13 @@ class VideoFragment : BaseFragment() {
                      putExtra("videoLink",it.videoLink.toString())
                  }
                 startActivity(intent)
+            }
+
+            adapterVideo.onItemLongClick = { responseVideoList ->
+                addBookmarkViewModel.addBookmark(TokenContainer.token!!,responseVideoList.videoName!!,responseVideoList.videoLink!!,responseVideoList.videoImage!!)
+                addBookmarkViewModel.addBookmarkLiveData.observe(viewLifecycleOwner){
+                    Toast.makeText(requireContext(), it.message,Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

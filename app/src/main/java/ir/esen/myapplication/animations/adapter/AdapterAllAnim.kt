@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.item_video_list.view.*
 class AdapterAllAnim(private val animList:List<ResponseAnimation>):RecyclerView.Adapter<AdapterAllAnim.AllAnimViewHolder>() {
 
     var onItemClick: ((ResponseAnimation) -> Unit)? = null
+    var onItemLongClick: ((ResponseAnimation) -> Unit)?= null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllAnimViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_video_list,parent,false)
@@ -29,6 +31,11 @@ class AdapterAllAnim(private val animList:List<ResponseAnimation>):RecyclerView.
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(itemAnim)
 
+        }
+
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick?.invoke(itemAnim)
+            return@setOnLongClickListener true
         }
     }
 

@@ -15,10 +15,12 @@ class AdapterVideoList(private val videoList: List<ResponseVideoList>) :
     RecyclerView.Adapter<AdapterVideoList.VideoListViewHolder>() {
 
     var onItemClicked: ((ResponseVideoList) -> Unit)? = null
+    var onItemLongClick: ((ResponseVideoList) -> Unit)?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoListViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_video_list, parent, false)
+
         return VideoListViewHolder(view)
     }
 
@@ -29,8 +31,13 @@ class AdapterVideoList(private val videoList: List<ResponseVideoList>) :
 
         holder.itemView.setOnClickListener {
             onItemClicked?.invoke(itemVideo)
+
         }
 
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick?.invoke(itemVideo)
+            return@setOnLongClickListener true
+        }
 
     }
 

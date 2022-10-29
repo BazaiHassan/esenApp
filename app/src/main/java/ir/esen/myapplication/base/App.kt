@@ -30,9 +30,14 @@ import ir.esen.myapplication.animations.search.repository.SearchAnimRepository
 import ir.esen.myapplication.animations.search.repository.SearchAnimRepositoryImpl
 import ir.esen.myapplication.animations.search.viewModel.SearchAnimViewModel
 import ir.esen.myapplication.animations.viewModel.AnimationViewModel
+import ir.esen.myapplication.profile.adapter.AdapterBookmarks
+import ir.esen.myapplication.profile.dataModel.ResponseShowProfile
+import ir.esen.myapplication.profile.dataSource.RemoteAddBookmarkDataSource
+import ir.esen.myapplication.profile.dataSource.RemoteRemoveBookmarkDataSource
 import ir.esen.myapplication.profile.dataSource.RemoteShowProfileDataSource
-import ir.esen.myapplication.profile.repository.ShowProfileRepository
-import ir.esen.myapplication.profile.repository.ShowProfileRepositoryImpl
+import ir.esen.myapplication.profile.repository.*
+import ir.esen.myapplication.profile.viewModel.AddBookmarkViewModel
+import ir.esen.myapplication.profile.viewModel.RemoveBookmarkViewModel
 import ir.esen.myapplication.profile.viewModel.ShowProfileViewModel
 import ir.esen.myapplication.videoStory.search.ResponseSearch
 import ir.esen.myapplication.videoStory.search.dataSource.RemoteSearchDataSource
@@ -66,8 +71,8 @@ class App : Application() {
 
             factory<AnimationRepository> { AnimationRepositoryImpl(RemoteAnimationDataSource(get())) }
             viewModel { AnimationViewModel(get()) }
-            factory {(animationList:List<ResponseAnimation>)->AdapterAnimation(animationList)}
-            factory {(allAnim:List<ResponseAnimation>)->AdapterAllAnim(allAnim)}
+            factory { (animationList: List<ResponseAnimation>) -> AdapterAnimation(animationList) }
+            factory { (allAnim: List<ResponseAnimation>) -> AdapterAllAnim(allAnim) }
 
             factory<SearchRepository> { SearchRepositoryImpl(RemoteSearchDataSource(get())) }
             viewModel { SearchViewModel(get()) }
@@ -82,20 +87,37 @@ class App : Application() {
             viewModel { AuthUserViewModel(get()) }
 
             // Check User for login or registration
-            factory<CheckUserRepository> { CheckUserRepositoryImpl(
-                RemoteCheckUserDataSource(get()),
-                LocalAuthUserDataSource(get())
-            ) }
+            factory<CheckUserRepository> {
+                CheckUserRepositoryImpl(
+                    RemoteCheckUserDataSource(get()),
+                    LocalAuthUserDataSource(get())
+                )
+            }
             viewModel { CheckUserViewModel(get()) }
 
-            // Show Profile
-            factory<ShowProfileRepository>{ShowProfileRepositoryImpl(RemoteShowProfileDataSource(get()))}
-            viewModel{ ShowProfileViewModel(get()) }
+            // Show Bookmarks
+            factory<ShowProfileRepository> {
+                ShowProfileRepositoryImpl(
+                    RemoteShowProfileDataSource(
+                        get()
+                    )
+                )
+            }
+            viewModel { ShowProfileViewModel(get()) }
+            factory { (bookmarkList: List<ResponseShowProfile>) -> AdapterBookmarks(bookmarkList) }
 
             // Search in animations
             factory<SearchAnimRepository> { SearchAnimRepositoryImpl(RemoteAnimSearchDataSource(get())) }
             viewModel { SearchAnimViewModel(get()) }
             factory { (searchList: List<ResponseSearchAnim>) -> AdapterSearchAnimList(searchList) }
+
+            // Add Bookmarks
+            factory<AddBookmarkRepository> { AddBookmarkRepositoryImpl(RemoteAddBookmarkDataSource(get())) }
+            viewModel {AddBookmarkViewModel(get())}
+
+            // Remove Bookmark
+            factory<RemoveBookmarkRepository> { RemoveBookmarkRepositoryImpl(RemoteRemoveBookmarkDataSource(get())) }
+            viewModel { RemoveBookmarkViewModel(get()) }
 
 
         }
