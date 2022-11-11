@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/story_nav_graph"
+    app:startDestination="@id/storyFragment">
+
+    <fragment
+        android:id="@+id/storyFragment"
+        android:name="ir.esen.myapplication.ui.fragments.StoryFragment"
+        android:label="StoryFragment">
+        <action
+            android:id="@+id/action_storyFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchVideoFragment"
+        android:name="ir.esen.myapplication.ui.fragments.SearchVideoFragment"
+        android:label="SearchVideoFragment">
+        <action
+            android:id="@+id/action_searchVideoFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedVideoFragment"
+        android:name="ir.esen.myapplication.ui.fragments.SavedVideoFragment"
+        android:label="SavedVideoFragment">
+        <action
+            android:id="@+id/action_savedVideoFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="ir.esen.myapplication.ui.fragments.PlayerFragment"
+        android:label="PlayerFragment" />
+</navigation>

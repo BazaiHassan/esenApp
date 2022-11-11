@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/storyFragment"
+        android:icon="@drawable/ic_video"
+        android:title="داستان ها" />
+
+    <item
+        android:id="@+id/searchVideoFragment"
+        android:icon="@drawable/ic_search"
+        android:title="جستجو" />
+
+    <item
+        android:id="@+id/savedVideoFragment"
+        android:icon="@drawable/ic_favorite"
+        android:title="علاقه مندی ها" />
+
+</menu>
